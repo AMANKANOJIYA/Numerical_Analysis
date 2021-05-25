@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+Numerical_Analysis/__init__.py
+Numerical_Analysis/__main__.py
+numerical_analysis_aman.egg-info/PKG-INFO
+numerical_analysis_aman.egg-info/SOURCES.txt
+numerical_analysis_aman.egg-info/dependency_links.txt
+numerical_analysis_aman.egg-info/entry_points.txt
+numerical_analysis_aman.egg-info/requires.txt
+numerical_analysis_aman.egg-info/top_level.txt

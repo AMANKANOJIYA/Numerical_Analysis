@@ -14,7 +14,7 @@ setup(
     description="This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business. This module contain some basic Functions so that it makes easyer to reuse them",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/uditvashisht/saral-square",
+    url="https://github.com/AMANKANOJIYA/Numerical_Analysis",
     author="Aman Kanojiya",
     author_email="aman.kanojiya4203@gmail.com",
     license="MIT",
@@ -29,7 +29,7 @@ setup(
     install_requires=["numpy"],
     entry_points={
         "console_scripts": [
-            "NumericalAna=Numerical_Analysis.__main__:main",
+            "Num_Analysis=Numerical_Analysis.__main__:main",
         ]
     },
 )

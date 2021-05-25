@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: numerical-analysis-aman
+Version: 1.0.0
+Summary: This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business. This module contain some basic Functions so that it makes easyer to reuse them
+Home-page: https://github.com/AMANKANOJIYA/Numerical_Analysis
+Author: Aman Kanojiya
+Author-email: aman.kanojiya4203@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Numerical Analysis
+
+This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business.
+
+## How It Works
+
+## How to Install
+
+Pip install this module from your console
+`pip install _________`
+
+## license
+
+This repository is licensed under the MIT license.
+See LICENSE for details.
+
+

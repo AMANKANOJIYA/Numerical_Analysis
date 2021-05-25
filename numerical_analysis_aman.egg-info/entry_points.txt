@@ -1,0 +1,3 @@
+[console_scripts]
+Num_Analysis = Numerical_Analysis.__main__:main
+
