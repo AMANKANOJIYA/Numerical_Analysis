@@ -219,6 +219,15 @@ class Numerical_Integration:
         return formula
 
 class Numerical_Interpolation:
+    """
+    In the mathematical field of numerical analysis, interpolation is a type of estimation,
+    a method of constructing new data points within the range of a discrete set of known data points.[1]
+
+    In engineering and science, one often has a number of data points, obtained by sampling or 
+    experimentation, which represent the values of a function for a limited number of values of the
+    independent variable. It is often required to interpolate, i.e., estimate the value of that function for
+    an intermediate value of the independent variable.
+    """
     def __init__(self):
         self.x_l=list(map(float,input("enter a list of x knot value :: ").split(" ")))
         self.y_l=list(map(float,input("enter a list of y knot value :: ").split(" ")))
