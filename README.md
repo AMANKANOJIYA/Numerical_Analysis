@@ -4,12 +4,10 @@ This Module is Numerical analysis, area of mathematics and computer science that
 
 ## How to Install
 
-Pip install this module from your console
-`pip install _________`
-
-Import this to module your Work Space
-`import Num_Analysis`
-
+Pip install this module from your console<br/>
+`pip install _________`<br/>
+Import this to module your Work Space<br/>
+`import Num_Analysis`<br/>
 And you are good to go
 
 ## Explore (How It Works)
@@ -23,14 +21,14 @@ This part contain interpolation Method at present having only one method but in 
 - `na.Simpson_13()` ![Simpson 1/3]()
 - `na.Simpson_38()` ![Simpson 3/8]()
 
-  This part contain Integration Method at present having only Three Basic method
+  This part contain Integration Method at present having only Three Basic method <br/>
   `na = Num_Analysis.Numerical_Analysis(x_0, y_0, x_given)`
 
 - `na.Eular( itration = 2 )` ![Eular]()
 - `na.EularModified( itration = 2 )` ![EularModified]()
 - `na.RungaKutta( itration = 2 )` ![RungaKutta]()
 
-This part contain Analysis Method at present having only Three Basic method
+This part contain Analysis Method at present having only Three Basic method <br/>
 `na=Num_Analysis.Numerical_Integration()`
 
 - `na.Langrangian()` ![Langrangian]()
