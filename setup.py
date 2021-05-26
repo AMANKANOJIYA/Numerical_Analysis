@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="numerical-analysis-aman",
-    version="1.0.0",
+    version="0.0.1",
     description="This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business. This module contain some basic Functions so that it makes easyer to reuse them",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -24,12 +24,12 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    packages=["Numerical_Analysis"],
+    packages=["Numerical_Analysis_Aman"],
     include_package_data=True,
     install_requires=["numpy"],
-    entry_points={
-        "console_scripts": [
-            "Num_Analysis=Numerical_Analysis.__main__:main",
-        ]
-    },
+    # entry_points={
+    #     "console_scripts": [
+    #         "Numerical_Analysis=Numerical_Analysis.__main__",
+    #     ]
+    # },
 )
