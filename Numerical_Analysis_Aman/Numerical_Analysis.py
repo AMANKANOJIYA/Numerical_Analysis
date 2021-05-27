@@ -220,13 +220,17 @@ class Numerical_Integration:
 
 class Numerical_Interpolation:
     """
-    In the mathematical field of numerical analysis, interpolation is a type of estimation,
-    a method of constructing new data points within the range of a discrete set of known data points.[1]
+    In the mathematical field of numerical analysis,
+    interpolation is a type of estimation, a method of constructing 
+    new data points within the range of a discrete set of known data points.
+    
+    In this Module We have Three Methods
+    ---> Langrangian
+    ---> Newton Divided Differences
 
-    In engineering and science, one often has a number of data points, obtained by sampling or 
-    experimentation, which represent the values of a function for a limited number of values of the
-    independent variable. It is often required to interpolate, i.e., estimate the value of that function for
-    an intermediate value of the independent variable.
+>=========================================================<
+|            Created By --- AMAN KANOJIYA                 |
+>=========================================================<
     """
     def __init__(self):
         self.x_l=list(map(float,input("enter a list of x knot value :: ").split(" ")))
@@ -234,12 +238,128 @@ class Numerical_Interpolation:
         self.find_val=eval(input("Enter the value to find :"))
 
     def Langrangian(self):
+        """
+        In numerical analysis, Lagrange polynomials are used for polynomial interpolation.
+        For a given set of points  (x_j,y_j) with no two x_j values equal, 
+        the Lagrange polynomial is the polynomial of lowest degree that assumes at each 
+        value x_j the corresponding value y_j, so that the functions coincide at each point.
+
+        Langrangian()
+
+        call this function to get Your Values
+        """
         function=0
         for i in range(len(self.x_l)):
             list_up=[self.find_val-j for j in self.x_l if j!=self.x_l[i]]
             list_down=[self.x_l[i]-j for j in self.x_l if j!=self.x_l[i]]
             function=function+self.y_l[i]*(np.prod(list_up)/np.prod(list_down))
         return function
+
+    def Newton_Divided(self):
+        """
+        In mathematics, divided differences is an algorithm, 
+        historically used for computing tables of logarithms and trigonometric functions. 
+        ... Divided differences is a recursive division process. 
+        The method can be used to calculate the coefficients in the 
+        interpolation polynomial in the Newton form.
+
+        Newton_Divided() 
+
+        call this function to get Your Values
+        """
+        length=len(self.x_l)
+        overall=[self.y_l]
+        x_gap=1
+        def divisor(x_0,x_1,y_0,y_1):
+            y=(y_1-y_0)/(x_1-x_0)
+            return y
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=divisor(self.x_l[j], self.x_l[j+x_gap], y_list_itrate[j], y_list_itrate[j+1])
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][0]
+            else:
+                set=""
+                for z in range(x):
+                    set=set+(f"*(self.find_val-({self.x_l[z]}))")
+                function+=((overall[x][0])*(eval(set[1:])))
+        return function
+    
+class Numerical_Algebra:
+    """
+    Numerical linear algebra, sometimes called applied linear algebra,
+    is the study of how matrix operations can be used to create computer 
+    algorithms which efficiently and accurately provide approximate 
+    answers to questions in continuous mathematics. 
+    It is a subfield of numerical analysis, and a type of linear algebra.
+
+    In this Module We have Three Methods
+    ---> Jacobi
+    ---> Gauss Seidel
+
+>=========================================================<
+|            Created By --- AMAN KANOJIYA                 |
+>=========================================================<
+    """
+    def __init__(self,l_1,l_2,l_3):
+        self.l_1=list(map(float,l_1.split(" ")))
+        self.l_2=list(map(float,l_2.split(" ")))
+        self.l_3=list(map(float,l_3.split(" ")))
+    def Jacobi(self,itration=6):
+        """
+        In numerical linear algebra, the Jacobi method is an iterative
+        algorithm for determining the solutions of a strictly diagonally 
+        dominant system of linear equations. Each diagonal element is solved for,
+        and an approximate value is plugged in.
+        The process is then iterated until it converges.
+
+        Jacobi() 
+        Also can pass number of Itration to Perform By default :=> 6
+        call this function to get Your Values 
+        """
+        x_list=[0]
+        y_list=[0]
+        z_list=[0]
+        for i in range(itration):
+            x,y,z=x_list[-1],y_list[-1],z_list[-1]
+            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
+            y_find=(self.l_2[-1]-((self.l_2[0])*(x))-((z)*(self.l_2[2])))/self.l_2[1]
+            z_find=(self.l_3[-1]-((self.l_3[0])*(x))-((y)*(self.l_3[1])))/self.l_3[2]
+            x_list.append(x_find)
+            y_list.append(y_find)
+            z_list.append(z_find)
+        return x_list,y_list,z_list
+    def Gauss_Seidel(self,itration=6):
+        """
+        In numerical linear algebra, the Gauss–Seidel method, 
+        also known as the Liebmann method or the method of successive displacement,
+        is an iterative method used to solve a system of linear equations.
+        It is named after the German mathematicians Carl Friedrich Gauss
+        and Philipp Ludwig von Seidel, and is similar to the Jacobi method.
+        
+        Gauss_Seidel() 
+        Also can pass number of Itration to Perform By default :=> 6
+        call this function to get Your Values 
+        """
+        x_list=[0]
+        y_list=[0]
+        z_list=[0]
+        for i in range(itration):
+            x,y,z=x_list[-1],y_list[-1],z_list[-1]
+            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
+            y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2])))/self.l_2[1]
+            z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1])))/self.l_3[2]
+            x_list.append(x_find)
+            y_list.append(y_find)
+            z_list.append(z_find)
+        return x_list,y_list,z_list
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)
