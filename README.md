@@ -47,6 +47,11 @@ This part contain Analysis Method at present having only Three Basic method <br/
 
 - `na.Jacobi(itration=6)` [Jacobi]("https://en.wikipedia.org/wiki/Jacobi_method")
 - `na.Gauss_Seidel(itration=6)` [Gauss Seidel]("https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method")
+- `na.Gauss_Seidel_4(list_4,itration=6)` [Gauss Seidel for 4 variable]("https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method")
+
+## Contact
+
+If any Issue Contact Me through Email `aman.kanojiya4203@gmail.com`
 
 ## license
 

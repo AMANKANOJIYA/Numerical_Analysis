@@ -309,9 +309,9 @@ class Numerical_Algebra:
 >=========================================================<
     """
     def __init__(self,l_1,l_2,l_3):
-        self.l_1=list(map(float,l_1.split(" ")))
-        self.l_2=list(map(float,l_2.split(" ")))
-        self.l_3=list(map(float,l_3.split(" ")))
+        self.l_1=l_1
+        self.l_2=l_2
+        self.l_3=l_3
     def Jacobi(self,itration=6):
         """
         In numerical linear algebra, the Jacobi method is an iterative
@@ -360,6 +360,34 @@ class Numerical_Algebra:
             y_list.append(y_find)
             z_list.append(z_find)
         return x_list,y_list,z_list
+    def Gauss_Seidel_4(self,l_4,itration=6):
+        """
+        In numerical linear algebra, the Gauss–Seidel method, 
+        also known as the Liebmann method or the method of successive displacement,
+        is an iterative method used to solve a system of linear equations.
+        It is named after the German mathematicians Carl Friedrich Gauss
+        and Philipp Ludwig von Seidel, and is similar to the Jacobi method.
+        Gauss Seidel for 4 Variable 
+
+        Gauss_Seidel_4() 
+        Also can pass number of Itration to Perform By default :=> 6
+        call this function to get Your Values 
+        """
+        x_list=[0]
+        y_list=[0]
+        z_list=[0]
+        w_list=[0]
+        for i in range(itration):
+            x,y,z,w=x_list[-1],y_list[-1],z_list[-1],w_list[-1]
+            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2]))-((w)*(self.l_1[3])))/self.l_1[0]
+            y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2]))-((w)*(self.l_2[3])))/self.l_2[1]
+            z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1]))-((w)*(self.l_3[3])))/self.l_3[2]
+            w_find=(l_4[-1]-((l_4[0])*(x_find))-((y_find)*(l_4[1]))-((z_find)*(l_4[2])))/l_4[3]
+            x_list.append(x_find)
+            y_list.append(y_find)
+            z_list.append(z_find)
+            w_list.append(w_find)
+        return x_list,y_list,z_list,w_list
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)
