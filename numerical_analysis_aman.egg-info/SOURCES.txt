@@ -1,0 +1,9 @@
+README.md
+setup.py
+Numerical_Analysis_Aman/Numerical_Analysis.py
+Numerical_Analysis_Aman/__init__.py
+numerical_analysis_aman.egg-info/PKG-INFO
+numerical_analysis_aman.egg-info/SOURCES.txt
+numerical_analysis_aman.egg-info/dependency_links.txt
+numerical_analysis_aman.egg-info/requires.txt
+numerical_analysis_aman.egg-info/top_level.txt
