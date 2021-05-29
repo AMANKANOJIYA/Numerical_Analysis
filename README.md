@@ -39,6 +39,8 @@ This part contain Analysis Method at present having only Three Basic method <br/
 
 - `na.Langrangian()` [Langrangian]("https://en.wikipedia.org/wiki/Lagrange_polynomial")
 - `na.Newton_Divided()` [Newton Divided Differences]("https://en.wikipedia.org/wiki/Divided_differences")
+- `na.Newton_Forward()` [Newton Forward]("https://en.wikipedia.org/wiki/Newton_polynomial")
+- `na.Newton_Backward()` [Newton Backward]("https://en.wikipedia.org/wiki/Newton_polynomial")
 
 ### Numerical Algebra
 
