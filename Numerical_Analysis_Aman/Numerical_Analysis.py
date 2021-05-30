@@ -126,7 +126,7 @@ class Numerical_Integration:
     def __init__(self,lower,upper):
         self.x,self.y=eval(lower),eval(upper)
 
-    def Trapazoid(self,itration):
+    def Trapazoid(self,itration=2):
         """
     >============ Trapazoid =================<
 
@@ -157,7 +157,7 @@ class Numerical_Integration:
         formula=gap*(((create_y[0]+create_y[-1])/2)+sum([create_y[i] for i in range(1,len(create_y)-1)]))
         return formula
     
-    def Simpson_38(self,itration):
+    def Simpson_38(self,itration=2):
         """
     >============ Simpson 1/3 =================<
 
@@ -189,7 +189,7 @@ class Numerical_Integration:
         formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
         return formula
     
-    def Simpson_13(self,itration):
+    def Simpson_13(self,itration=2):
         """
     >============ Simpson 3/8 =================<
 

@@ -16,8 +16,8 @@ idea about all methods anf Functions
 
 ### Numerical Integration
 
-This part contain interpolation Method at present having only one method but in near future you can also explore new ones
-`na=Numerical_Analysis_Aman.Numerical_Interpolation(lower,upper)`
+This part contain interpolation Method having Three method you can also explore new ones
+`na=Numerical_Analysis_Aman.Numerical_Integration(lower,upper)`
 
 - `na.Trapazoid(itration=2)` [Trapazoid Method]("https://en.wikipedia.org/wiki/Trapezoidal_rule#:~:text=The%20trapezoidal%20rule%20is%20one,similar%20to%20the%20trapezoid%20rule.")
 - `na.Simpson_13(itration=2)` [Simpson 1/3]("https://en.wikipedia.org/wiki/Simpson%27s_rule")
@@ -25,7 +25,7 @@ This part contain interpolation Method at present having only one method but in 
 
 ### Numerical Analysis
 
-This part contain Integration Method at present having only Three Basic method <br/>
+This part contain Integration Method having Three Basic method <br/>
 `na = Numerical_Analysis_Aman.Numerical_Analysis(x_0, y_0, x_given)`
 
 - `na.Eular( itration = 2 )` [Eular]("https://en.wikipedia.org/wiki/Euler_method")
@@ -34,8 +34,8 @@ This part contain Integration Method at present having only Three Basic method <
 
 ### Numerical Interpolation
 
-This part contain Analysis Method at present having only Three Basic method <br/>
-`na=Numerical_Analysis_Aman.Numerical_Integration(x_list,y_list,find_value)`
+This part contain Analysis Methodt having Four Basic method <br/>
+`na=Numerical_Analysis_Aman.Numerical_Interpolation(x_list,y_list,find_value)`
 
 - `na.Langrangian()` [Langrangian]("https://en.wikipedia.org/wiki/Lagrange_polynomial")
 - `na.Newton_Divided()` [Newton Divided Differences]("https://en.wikipedia.org/wiki/Divided_differences")
@@ -44,7 +44,7 @@ This part contain Analysis Method at present having only Three Basic method <br/
 
 ### Numerical Algebra
 
-This part contain Analysis Method at present having only Three Basic method <br/>
+This part contain Analysis Method having Three Basic method <br/>
 `na=Numerical_Analysis_Aman.Numerical_Algebra(list_1,list_2,list_3)`
 
 - `na.Jacobi(itration=6)` [Jacobi]("https://en.wikipedia.org/wiki/Jacobi_method")
