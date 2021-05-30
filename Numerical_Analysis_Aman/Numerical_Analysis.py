@@ -1,4 +1,5 @@
 import numpy as np
+import math
 class Numerical_Analysis:
     """Numerical analysis, area of mathematics and computer science that creates,  
     analyzes, and implements algorithms for obtaining numerical solutions to  
@@ -122,11 +123,10 @@ class Numerical_Integration:
 >=========================================================<
 
     """
-    def __init__(self):
-        self.x,self.y=eval(input("Enter Lower Limit of the Function:-> ")),eval(input("Enter Upper Limit of the Funcion:-> "))
-        self.itration=eval(input("Number of itrations :  "))
+    def __init__(self,lower,upper):
+        self.x,self.y=eval(lower),eval(upper)
 
-    def Trapazoid(self):
+    def Trapazoid(self,itration):
         """
     >============ Trapazoid =================<
 
@@ -151,13 +151,13 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+        gap=(self.y-self.x)/itration
+        create_x=[i*gap for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=gap*(((create_y[0]+create_y[-1])/2)+sum([create_y[i] for i in range(1,len(create_y)-1)]))
         return formula
     
-    def Simpson_38(self):
+    def Simpson_38(self,itration):
         """
     >============ Simpson 1/3 =================<
 
@@ -183,13 +183,13 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+        gap=(self.y-self.x)/itration
+        create_x=[i*gap for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
         return formula
     
-    def Simpson_13(self):
+    def Simpson_13(self,itration):
         """
     >============ Simpson 3/8 =================<
 
@@ -212,8 +212,8 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return 1/(1+x**2)
-        gap=(self.y-self.x)/self.itration
-        create_x=[i*gap for i in range(0,self.itration+1)]
+        gap=(self.y-self.x)/itration
+        create_x=[i*gap for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
         return formula
@@ -232,10 +232,10 @@ class Numerical_Interpolation:
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
     """
-    def __init__(self):
-        self.x_l=list(map(float,input("enter a list of x knot value :: ").split(" ")))
-        self.y_l=list(map(float,input("enter a list of y knot value :: ").split(" ")))
-        self.find_val=eval(input("Enter the value to find :"))
+    def __init__(self,x_list,y_list,find_value):
+        self.x_l=x_list
+        self.y_l=y_list
+        self.find_val=find_value
 
     def Langrangian(self):
         """
@@ -290,6 +290,70 @@ class Numerical_Interpolation:
                 for z in range(x):
                     set=set+(f"*(self.find_val-({self.x_l[z]}))")
                 function+=((overall[x][0])*(eval(set[1:])))
+        return function
+
+    def Newton_Forward(self):
+        """
+        Forward Differences: The differences y1 – y0, y2 – y1, y3 – y2, ……,
+        yn – yn–1 when denoted by dy0, dy1, dy2, ……, dyn–1 are respectively, 
+        called the first forward differences.
+        
+        Newton_Forward()
+
+        call this function to get Your Values
+        """
+        length=len(self.x_l)
+        overall=[self.y_l]
+        x_gap=1
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=y_list_itrate[j+1] - y_list_itrate[j]
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        u=(self.find_val-self.x_l[0])/(self.x_l[1]-self.x_l[0])
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][0]
+            else :
+                set=""
+                for z in range(x):
+                    set+=(f"*(u-({z}))")
+                function+=((eval(set[1:]))*overall[x][0])/math.factorial(x)
+        return function
+    def Newton_Backward(self):
+        """
+        Backward Differences: The differences y1 – y0, y2 – y1, ……, yn – yn–1 
+        when denoted by dy1, dy2, ……, dyn, respectively, are called first backward difference.
+
+        Newton_Backward()
+
+        call this function to get Your Values
+        """
+        length=len(self.x_l)
+        overall=[self.y_l]
+        x_gap=1
+        for i in range(length,1,-1):
+            local=[]
+            y_list_itrate=overall[-1]
+            for j in range(i-1):
+                z=y_list_itrate[j+1] - y_list_itrate[j]
+                local.append(z)
+            overall.append(local)
+            x_gap+=1
+        u=(self.find_val-self.x_l[-1])/(self.x_l[1]-self.x_l[0])
+        function=0
+        for x in range(len(overall)):
+            if x+1==1:
+                function+=overall[x][-1]
+            else :
+                set=""
+                for z in range(x):
+                    set+=(f"*(u+({z}))")
+                function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
         return function
     
 class Numerical_Algebra:
@@ -395,12 +459,19 @@ if __name__=="__main__":
     print(x.EularModified(5))
     print(x.RungaKutta(5))
 
-    y=Numerical_Integration()
+    y=Numerical_Integration(12,34)
     print(y.Trapazoid())
     print(y.Simpson_13())
     print(y.Simpson_38())
-    # "1 0.972 0.9 0.8 0.692 0.5901 0.5",0.16666
 
-    z=Numerical_Interpolation()
+    z=Numerical_Interpolation([],[],12)
     print(z.Langrangian())
+    print(z.Newton_Divided())
+    print(z.Newton_Forward())
+    print(z.Newton_Backward())
+
+    w=Numerical_Algebra([], [], [])
+    print(w.Jacobi())
+    print(w.Gauss_Seidel())
+    print(w.Gauss_Seidel_4())
 

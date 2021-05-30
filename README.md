@@ -17,7 +17,7 @@ idea about all methods anf Functions
 ### Numerical Integration
 
 This part contain interpolation Method at present having only one method but in near future you can also explore new ones
-`na=Numerical_Analysis_Aman.Numerical_Interpolation()`
+`na=Numerical_Analysis_Aman.Numerical_Interpolation(lower,upper)`
 
 - `na.Trapazoid(itration=2)` [Trapazoid Method]("https://en.wikipedia.org/wiki/Trapezoidal_rule#:~:text=The%20trapezoidal%20rule%20is%20one,similar%20to%20the%20trapezoid%20rule.")
 - `na.Simpson_13(itration=2)` [Simpson 1/3]("https://en.wikipedia.org/wiki/Simpson%27s_rule")
@@ -35,7 +35,7 @@ This part contain Integration Method at present having only Three Basic method <
 ### Numerical Interpolation
 
 This part contain Analysis Method at present having only Three Basic method <br/>
-`na=Numerical_Analysis_Aman.Numerical_Integration()`
+`na=Numerical_Analysis_Aman.Numerical_Integration(x_list,y_list,find_value)`
 
 - `na.Langrangian()` [Langrangian]("https://en.wikipedia.org/wiki/Lagrange_polynomial")
 - `na.Newton_Divided()` [Newton Divided Differences]("https://en.wikipedia.org/wiki/Divided_differences")
@@ -45,7 +45,7 @@ This part contain Analysis Method at present having only Three Basic method <br/
 ### Numerical Algebra
 
 This part contain Analysis Method at present having only Three Basic method <br/>
-`na=Numerical_Analysis_Aman.Numerical_Algebra(Exp-1,Exp-2,Exp-3)`
+`na=Numerical_Analysis_Aman.Numerical_Algebra(list_1,list_2,list_3)`
 
 - `na.Jacobi(itration=6)` [Jacobi]("https://en.wikipedia.org/wiki/Jacobi_method")
 - `na.Gauss_Seidel(itration=6)` [Gauss Seidel]("https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method")
