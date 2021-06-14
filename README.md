@@ -7,7 +7,6 @@ This Module is Numerical analysis, area of mathematics and computer science that
 ## Official Relese
 
 <a href="https://pypi.org/project/numerical-analysis-aman/0.0.7/">Pypi</a>
-<!-- ["PyPi - "]("https://pypi.org/project/numerical-analysis-aman/0.0.7/") -->
 
 ## How to Install
 
@@ -29,7 +28,7 @@ idea about all methods anf Functions
 This part contain interpolation Method having Three method you can also explore new ones
 `na=Numerical_Analysis_Aman.Numerical_Integration(lower,upper)`
 
-- `na.Trapazoid(itration=2)` [Trapazoid Method]("https://en.wikipedia.org/wiki/Trapezoidal_rule#:~:text=The%20trapezoidal%20rule%20is%20one,similar%20to%20the%20trapezoid%20rule.")
+- `na.Trapazoid(itration=2)` <a href="https://en.wikipedia.org/wiki/Trapezoidal_rule#:~:text=The%20trapezoidal%20rule%20is%20one,similar%20to%20the%20trapezoid%20rule.">Trapazoid Method</a>
 - `na.Simpson_13(itration=2)` [Simpson 1/3]("https://en.wikipedia.org/wiki/Simpson%27s_rule")
 - `na.Simpson_38(itration=2)` [Simpson 3/8]("https://en.wikipedia.org/wiki/Simpson%27s_rule")
 
