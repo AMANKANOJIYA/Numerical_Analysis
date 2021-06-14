@@ -6,7 +6,8 @@ This Module is Numerical analysis, area of mathematics and computer science that
 
 ## Official Relese
 
-["PyPi - "]("https://pypi.org/project/numerical-analysis-aman/0.0.7/")
+<a href="https://pypi.org/project/numerical-analysis-aman/0.0.7/">Pypi</a>
+<!-- ["PyPi - "]("https://pypi.org/project/numerical-analysis-aman/0.0.7/") -->
 
 ## How to Install
 
