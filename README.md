@@ -4,9 +4,16 @@
 
 This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business.
 
+## Official Relese
+
+["PyPi - "]("https://pypi.org/project/numerical-analysis-aman/0.0.7/")
+
 ## How to Install
 
 Pip install this module from your console<br/>
+
+` pip install numerical-analysis-aman `
+
 Import this to module your Work Space<br/>
 `import Numerical_Analysis_Aman`<br/>
 And you are good to go
