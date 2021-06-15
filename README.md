@@ -1,6 +1,6 @@
 # VERSION 0.0.7
 
-[![Downloads](https://static.pepy.tech/personalized-badge/numerical-analysis-aman?period=total&units=international_system&left_color=blue&right_color=green&left_text=Downloads%20By%20user's)](https://pepy.tech/project/numerical-analysis-aman)
+[![Downloads](https://static.pepy.tech/personalized-badge/numerical-analysis-aman?period=total&units=international_system&left_color=black&right_color=blue&left_text=Downloads)](https://pepy.tech/project/numerical-analysis-aman)
 
 # Numerical Analysis
 
