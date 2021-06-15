@@ -1,3 +1,25 @@
+"""
+--------------------------------------------------------------------------
+|                  Numerical-ANALYSIS (Nuerical Methods)                 |
+--------------------------------------------------------------------------
+
+* Creater Message To all users --
+==================================
+
+This Liberary Is based On one of the most fundamental Numerical Methods Topics
+.It contain a set of calculations and direct formula based functions which can 
+be used In all types of projects as well as to solve the complex problem ,
+
+I am very Much glad to Get contribution on github If any one intrested can visit
+my profile or contact me through my email "aman.kanojiya4203@gmail.com"
+
+This project have no restriction evry one can use it as there own and create there
+own version. if you like you can give me a small credit It will boost me to create
+more such projects and motivate to contribute more in open source
+
+ - Thank You 
+
+"""
 import numpy as np
 import math
 class Numerical_Analysis:
@@ -229,6 +251,8 @@ class Numerical_Interpolation:
     In this Module We have Three Methods
     ---> Langrangian
     ---> Newton Divided Differences
+    ---> Newton Forward
+    ---> Newton Backward
 
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |
@@ -368,7 +392,8 @@ class Numerical_Algebra:
 
     In this Module We have Three Methods
     ---> Jacobi
-    ---> Gauss Seidel
+    ---> Gauss Seidel for 3 variables
+    ---> Gauss Seidel for 4 variables
 
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |
@@ -456,22 +481,27 @@ class Numerical_Algebra:
         return x_list,y_list,z_list,w_list
 
 if __name__=="__main__":
-    x = Numerical_Analysis(0, 1, 0.1)
-    # print(x.Eular(5))
-    # print(x.EularModified(5))
-    # print(x.RungaKutta(5))
 
-    y=Numerical_Integration(12,34)
+    # Test For Varification of error can be removed 
+    x = Numerical_Analysis(0, 1, 0.1,3,"x+y")
+    # print(x.Eular())
+    # print(x.EularModified())
+    # print(x.RungaKutta())
+
+    # Test For Varification of error can be removed 
+    y=Numerical_Integration(12,34,"1+x")
     # print(y.Trapazoid())
     # print(y.Simpson_13())
     # print(y.Simpson_38())
 
-    z=Numerical_Interpolation([],[],12)
+    # Test For Varification of error can be removed 
+    z=Numerical_Interpolation([1],[1],12)
     # print(z.Langrangian())
     # print(z.Newton_Divided())
     # print(z.Newton_Forward())
     # print(z.Newton_Backward())
 
+    # Test For Varification of error can be removed 
     w=Numerical_Algebra([], [], [])
     # print(w.Jacobi())
     # print(w.Gauss_Seidel())
