@@ -15,10 +15,12 @@ class Numerical_Analysis:
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
      """
-    def __init__(self,x_0,y_0,x_given):
+    def __init__(self,x_0,y_0,x_given,gap,function):
         self.x_0=x_0
         self.y_0=y_0
         self.x_given=x_given
+        self.gap=gap
+        self.function=str(function)
     def functionToWork(self,x,y):
         """
         This Help to generate The Function Output Given as per queestion 
@@ -29,9 +31,8 @@ class Numerical_Analysis:
             functionToWork(x,y)
         this function takes 2 input
         """
-        func=(y**2-x**2)/(y**2+x**2)
-        return func
-    def EularModified(self,itration=2):
+        return eval(self.function)
+    def EularModified(self,itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -48,15 +49,15 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(1,itration+1):
-            y_get=create_y[-1]+(gap*self.functionToWork(create_x[i],create_y[-1]))
-            y_confirm=create_y[-1]+((gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+gap,y_get)))
+        for i in range(0,len(create_x)-1):
+            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
+            y_confirm=create_y[-1]+((self.gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+self.gap,y_get)))
             create_y.append(y_confirm)
         return create_x,create_y
-    def Eular(self,itration=2):
+    def Eular(self,itration=None):
         """
     >============ Eular Method =================<
 
@@ -71,14 +72,14 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(1,itration+1):
-            y_get=create_y[-1]+(gap*self.functionToWork(create_x[i],create_y[-1]))
+        for i in range(0,len(create_x)-1):
+            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
             create_y.append(y_get)
         return create_x,create_y
-    def RungaKutta(self,itration=2):
+    def RungaKutta(self,itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -92,14 +93,14 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        gap=self.x_given/(itration)
-        create_x=[i*gap for i in range(itration+1) ]
+        itration=4 if itration==None else itration
+        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
         create_y=[self.y_0]
-        for i in range(itration):
-            k_1 = gap * self.functionToWork(create_x[i],create_y[-1])
-            k_2 = gap * self.functionToWork(create_x[i]+(gap/2),create_y[-1]+(k_1/2))
-            k_3 = gap * self.functionToWork(create_x[i]+(gap/2),create_y[-1]+(k_2/2))
-            k_4 = gap * self.functionToWork(create_x[i]+gap,create_y[-1]+k_3)
+        for i in range(0,len(create_x)-1):
+            k_1 = self.gap * self.functionToWork(create_x[i],create_y[-1])
+            k_2 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_1/2))
+            k_3 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_2/2))
+            k_4 = self.gap * self.functionToWork(create_x[i]+self.gap,create_y[-1]+k_3)
             k = (k_1+(2*k_2)+(2*k_3)+k_4)/6
             yOut = create_y[-1] + k
             create_y.append(yOut)
@@ -123,8 +124,9 @@ class Numerical_Integration:
 >=========================================================<
 
     """
-    def __init__(self,lower,upper):
-        self.x,self.y=eval(lower),eval(upper)
+    def __init__(self,lower,upper,function):
+        self.x,self.y=eval(str(lower)),eval(str(upper))
+        self.function=str(function)
 
     def Trapazoid(self,itration=2):
         """
@@ -150,11 +152,11 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/itration
-        create_x=[i*gap for i in range(0,itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
-        formula=gap*(((create_y[0]+create_y[-1])/2)+sum([create_y[i] for i in range(1,len(create_y)-1)]))
+        formula=(gap/2)*((create_y[0]+create_y[-1])+2*sum([create_y[i] for i in range(1,len(create_y)-1)]))
         return formula
     
     def Simpson_38(self,itration=2):
@@ -182,9 +184,9 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/itration
-        create_x=[i*gap for i in range(0,itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
         return formula
@@ -211,9 +213,9 @@ class Numerical_Integration:
                 functionToWork(x)
             this function takes 1 input
             """
-            return 1/(1+x**2)
-        gap=(self.y-self.x)/itration
-        create_x=[i*gap for i in range(0,itration+1)]
+            return eval(self.function)
+        gap=(self.y-self.x)/(itration)
+        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
         create_y=[functionToWork(i) for i in create_x]
         formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
         return formula
@@ -455,23 +457,23 @@ class Numerical_Algebra:
 
 if __name__=="__main__":
     x = Numerical_Analysis(0, 1, 0.1)
-    print(x.Eular(5))
-    print(x.EularModified(5))
-    print(x.RungaKutta(5))
+    # print(x.Eular(5))
+    # print(x.EularModified(5))
+    # print(x.RungaKutta(5))
 
     y=Numerical_Integration(12,34)
-    print(y.Trapazoid())
-    print(y.Simpson_13())
-    print(y.Simpson_38())
+    # print(y.Trapazoid())
+    # print(y.Simpson_13())
+    # print(y.Simpson_38())
 
     z=Numerical_Interpolation([],[],12)
-    print(z.Langrangian())
-    print(z.Newton_Divided())
-    print(z.Newton_Forward())
-    print(z.Newton_Backward())
+    # print(z.Langrangian())
+    # print(z.Newton_Divided())
+    # print(z.Newton_Forward())
+    # print(z.Newton_Backward())
 
     w=Numerical_Algebra([], [], [])
-    print(w.Jacobi())
-    print(w.Gauss_Seidel())
-    print(w.Gauss_Seidel_4())
+    # print(w.Jacobi())
+    # print(w.Gauss_Seidel())
+    # print(w.Gauss_Seidel_4())
 
