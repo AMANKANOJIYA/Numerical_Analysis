@@ -1,5 +1,7 @@
 # VERSION 1.0.0
 
+[![Downloads](https://static.pepy.tech/personalized-badge/numerical-analysis-aman?period=total&units=international_system&left_color=black&right_color=blue&left_text=Downloads)](https://pepy.tech/project/numerical-analysis-aman)
+
 # Numerical Analysis
 
 This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business.
