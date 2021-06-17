@@ -1,4 +1,4 @@
-# VERSION 0.0.7
+# VERSION 1.0.0
 
 # Numerical Analysis
 
@@ -23,6 +23,7 @@ Import this module to your Work Space<br/>
 ```python
 
 # Import In Python File
+
 import Numerical_Analysis_Aman as na
 
 ```
@@ -77,10 +78,10 @@ Example and sample for input and how to work on it
 
 import Numerical_Analysis_Aman as na
 
-x = na.Numerical_Integration(2,7,"1/(5*x+3)") #0.4301 - 5
-y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))") #2
-z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925) # 14.666 - 10
-w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61]) #x=1.23 y=2.34 z=3.45
+x = na.Numerical_Integration(2,7,"1/(5*x+3)")
+y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))")
+z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925)
+w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61])
 
 # All of them are Initiated at once you can use them individualy as per requirement
 
@@ -102,20 +103,21 @@ print(z.Newton_Backward( ))
 # default Itrations - 6
 print(w.Jacobi( ))
 print(w.Gauss_Seidel( ))
+# needed Additional list for 4 variable
 # print(w.Gauss_Seidel_4(list_4))
 
 ```
 
 ## Contact
 
-    ### Authors
+### Authors
 
-    - [@AmanKanojiya](https://www.github.com/AMANKANOJIYA)
+- [@AmanKanojiya](https://www.github.com/AMANKANOJIYA)
 
 If any Issue Contact Me through Email <a herf="mailto:aman.kanojiya4203@gmail.com">aman.kanojiya4203@gmail.com</a>
 
 ## license
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs) <br>
 This repository is licensed under the MIT license.
 See LICENSE for details.
