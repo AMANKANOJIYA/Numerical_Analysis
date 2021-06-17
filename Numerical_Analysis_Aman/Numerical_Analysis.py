@@ -29,9 +29,10 @@ import math
 def Error_Handler(func):
     def inner (*args):
         try:
-            func(*args)
+            return func(*args)
         except Exception as e:
             print(f"{type(e).__name__}\n==============\n {e} \n in {func.__name__} function")
+            return "error"
     return inner
         
 # MAIN CLASS START
@@ -421,6 +422,7 @@ class Numerical_Algebra:
     ---> Gauss Seidel for 3 variables
     ---> Gauss Seidel for 4 variables
 
+
 >=========================================================<
 |            Created By --- AMAN KANOJIYA                 |
 >=========================================================<
@@ -513,27 +515,27 @@ class Numerical_Algebra:
 if __name__=="__main__":
 
     # Test For Varification of error can be removed 
-    x = Numerical_Analysis(0, 1, 0.1,3,"x+y")
-    # print(x.Eular())
-    # print(x.EularModified())
-    # print(x.RungaKutta())
+    y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))") #2
+    print(y.Eular(  ))
+    print(y.EularModified(  ))
+    print(y.RungaKutta(  ))
 
     # Test For Varification of error can be removed 
-    y=Numerical_Integration(12,34,"1+x")
-    # print(y.Trapazoid())
-    # print(y.Simpson_13())
-    # print(y.Simpson_38())
+    x = na.Numerical_Integration(2,7,"1/(5*x+3)") #0.4301 - 5
+    print(x.Trapazoid(6))
+    print(x.Simpson_13(6))
+    print(x.Simpson_38(6))
 
     # Test For Varification of error can be removed 
-    z=Numerical_Interpolation([1],[1],12)
-    # print(z.Langrangian())
-    # print(z.Newton_Divided())
-    # print(z.Newton_Forward())
-    # print(z.Newton_Backward())
+    z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925) # 14.666 - 10
+    print(z.Langrangian())
+    print(z.Newton_Divided())
+    print(z.Newton_Forward())
+    print(z.Newton_Backward())
 
     # Test For Varification of error can be removed 
-    w=Numerical_Algebra([], [], [])
-    # print(w.Jacobi())
-    # print(w.Gauss_Seidel())
+    w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61]) #x=1.23 y=2.34 z=3.45
+    print(w.Jacobi())
+    print(w.Gauss_Seidel())
     # print(w.Gauss_Seidel_4())
 
