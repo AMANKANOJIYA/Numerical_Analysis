@@ -1,4 +1,4 @@
-# VERSION 1.0.0
+# VERSION 1.0.1
 
 <img src="https://github.com/AMANKANOJIYA/Numerical_Analysis/src/image-1.png"></img>
 
@@ -8,9 +8,15 @@
 
 This Module is Numerical analysis, area of mathematics and computer science that creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables. Such problems arise throughout the natural sciences, social sciences, engineering, medicine, and business.
 
+## New Added
+
+- [Numerical-analysis](README.md)
+- [Vector](Vector.md)
+
 ## Official Release
 
-<a href="https://pypi.org/project/numerical-analysis-aman/">Pypi</a>
+<a href="https://pypi.org/project/numerical-analysis-aman/">Pypi</a> ,
+<a href="https://pepy.tech/project/numerical-analysis-aman">Pepy</a>
 
 ## How to Install
 
@@ -27,9 +33,15 @@ Import this module to your Work Space<br/>
 ```python
 
 # Import In Python File
+from Numerical_Analysis_Aman import <Module>
+# =>> _MODULES_
+# -> Numerical_Algebra
+# -> Numerical_Analysis
+# -> Numerical_Integration
+# -> Numerical_Interpolation
 
-import Numerical_Analysis_Aman as na
-
+# Import all
+from Numerical_Analysis_Aman import *
 ```
 
 ## Explore (How It Works)
