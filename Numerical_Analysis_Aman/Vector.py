@@ -74,11 +74,12 @@ class Vector(object):
                            y in zip(self.coordinates, v.coordinates)]
         return Vector(new_coordinates)
 
-    def __mul__(self, c):
+    def __mul__(self, n):
         '''
         Multiply two Vector with same Dimention
         '''
-        new_coordinates = [x*c for x in self.coordinates]
+        new_coordinates = [x*n for x,
+                           n in zip(self.coordinates, n.coordinates)]
         return Vector(new_coordinates)
 
     def times_scalar(self, c):
@@ -133,7 +134,7 @@ class Vector(object):
         '''
         find if the two Give Vectors are parallel to each Other 
         '''
-        return (self.is_zero() or v.is_zero() or self.angle(n) == 0 or self.angle(n) == math.pi)
+        return (self.is_zero() or n.is_zero() or self.angle(n) == 0 or self.angle(n) == math.pi)
 
     def is_zero(self, tolerance=1e-10):
         '''
@@ -141,11 +142,11 @@ class Vector(object):
         '''
         return self.magnitude() < tolerance
 
-    def is_orthagonal(self, n, tolerance=1e-10):
+    def is_orthogonal(self, n, tolerance=1e-10):
         '''
         find if the two Give Vectors are parallel to each Other 
         '''
-        return abs(self.dot(n) < tolerance)
+        return self.dot(n) < tolerance
 
     def com_orthogonal_to(self, n):
         """
@@ -222,7 +223,7 @@ if __name__ == "__main__":
     # print(mvr.normalized())  # Vector: (0.9339352140866403, -0.35744232526233)
 
     # mvr = Vector([0, 0, 0])
-    ## Vector: (0.3404012959433014, 0.5300437012984873, -0.7766470449528028)
+    # Vector: (0.3404012959433014, 0.5300437012984873, -0.7766470449528028)
     # print(mvr.normalized())
 
     mvr = Vector([-8.987, -9.838, 5.031])

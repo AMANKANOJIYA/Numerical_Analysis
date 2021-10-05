@@ -11,7 +11,7 @@ This Module is Numerical analysis, area of mathematics and computer science that
 ## New Added
 
 - [Numerical-analysis](README.md)
-- [Vector](Vector.md)
+- **[Vector](Vector.md)**
 
 ## Official Release
 
