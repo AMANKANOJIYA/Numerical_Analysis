@@ -1,10 +1,10 @@
 # VERSION 1.0.1
 
-<img src="https://github.com/AMANKANOJIYA/Numerical_Analysis/src/image-1.png"></img>
+<img src="https://github.com/AMANKANOJIYA/Numerical_Analysis/blob/master/src/saved.jpg"></img>
 
 [![Downloads](https://static.pepy.tech/personalized-badge/numerical-analysis-aman?period=total&units=international_system&left_color=black&right_color=blue&left_text=Downloads)](https://pepy.tech/project/numerical-analysis-aman)
 
-# Numerical Analysis
+# Vector
 
 Vectors are used in science to describe anything that has both a direction and a magnitude. They are usually drawn as pointed arrows, the length of which represents the vector's magnitude. Vectors have many real-life applications, including situations involving force or velocity. For example, consider the forces acting on a boat crossing a river. The boat's motor generates a force in one direction, and the current of the river generates a force in another direction. Both forces are vectors
 
