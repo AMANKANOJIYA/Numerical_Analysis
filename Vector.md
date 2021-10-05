@@ -89,7 +89,7 @@ print( v1.normalized() )
 
 # Angle
 print( v1.angle(v2) ) #RADIAN output
-print( v1.angle( v2, deg=True ) ) #RADIAN output
+print( v1.angle( v2, deg=True ) ) #Degree output
 
 ```
 
@@ -117,6 +117,7 @@ print( v1.com_parallel_to(v2))
 print( v1.com_orthogonal_to(v2))
 ```
 
+**_Maybe in future Version You will get more Advanced functions for Vector so stay Tuned_**
 ## Contact
 
 ### Authors
