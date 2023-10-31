@@ -27,22 +27,27 @@ import numpy as np
 import math
 
 # ERROR HANDLING
+
+
 def Error_Handler(func):
-    def inner (*args):
+    def inner(*args):
         try:
             return func(*args)
         except Exception as e:
-            print(f"{type(e).__name__}\n==============\n {e} \n in {func.__name__} function")
+            print(
+                f"{type(e).__name__}\n==============\n {e} \n in {func.__name__} function")
             return "error"
     return inner
-        
+
 # MAIN CLASS START
+
+
 class Numerical_Analysis:
     """Numerical analysis, area of mathematics and computer science that creates,  
     analyzes, and implements algorithms for obtaining numerical solutions to  
     problems involving continuous variables. Such problems arise throughout the 
     natural sciences, social sciences, engineering, medicine, and business.
-     
+
     In this Module We have Three Methods
     ---> Eular mathod
     ---> Eular Modified method
@@ -53,15 +58,15 @@ class Numerical_Analysis:
 >=========================================================<
      """
     @Error_Handler
-    def __init__(self,x_0,y_0,x_given,gap,function):
-        self.x_0=x_0
-        self.y_0=y_0
-        self.x_given=x_given
-        self.gap=gap
-        self.function=str(function)
+    def __init__(self, x_0, y_0, x_given, gap, function):
+        self.x_0 = x_0
+        self.y_0 = y_0
+        self.x_given = x_given
+        self.gap = gap
+        self.function = str(function)
 
-    @Error_Handler    
-    def functionToWork(self,x,y):
+    @Error_Handler
+    def functionToWork(self, x, y):
         """
         This Help to generate The Function Output Given as per queestion 
         you can change this value for the code
@@ -74,7 +79,7 @@ class Numerical_Analysis:
         return eval(self.function)
 
     @Error_Handler
-    def EularModified(self,itration=None):
+    def EularModified(self, itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -91,17 +96,20 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        itration=4 if itration==None else itration
-        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
-        create_y=[self.y_0]
-        for i in range(0,len(create_x)-1):
-            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
-            y_confirm=create_y[-1]+((self.gap/2)*(self.functionToWork(create_x[i],create_y[-1])+self.functionToWork(create_x[i]+self.gap,y_get)))
+        itration = 4 if itration == None else itration
+        create_x = [
+            self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap) <= self.x_given]
+        create_y = [self.y_0]
+        for i in range(0, len(create_x)-1):
+            y_get = create_y[-1]+(self.gap *
+                                  self.functionToWork(create_x[i], create_y[-1]))
+            y_confirm = create_y[-1]+((self.gap/2)*(self.functionToWork(
+                create_x[i], create_y[-1])+self.functionToWork(create_x[i]+self.gap, y_get)))
             create_y.append(y_confirm)
-        return create_x,create_y
-    
+        return create_x, create_y
+
     @Error_Handler
-    def Eular(self,itration=None):
+    def Eular(self, itration=None):
         """
     >============ Eular Method =================<
 
@@ -112,20 +120,22 @@ class Numerical_Analysis:
     to the step size.
 
       Eular() 
-      
+
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        itration=4 if itration==None else itration
-        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
-        create_y=[self.y_0]
-        for i in range(0,len(create_x)-1):
-            y_get=create_y[-1]+(self.gap*self.functionToWork(create_x[i],create_y[-1]))
+        itration = 4 if itration == None else itration
+        create_x = [
+            self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap) <= self.x_given]
+        create_y = [self.y_0]
+        for i in range(0, len(create_x)-1):
+            y_get = create_y[-1]+(self.gap *
+                                  self.functionToWork(create_x[i], create_y[-1]))
             create_y.append(y_get)
-        return create_x,create_y
+        return create_x, create_y
 
     @Error_Handler
-    def RungaKutta(self,itration=None):
+    def RungaKutta(self, itration=None):
         """
     >============ Eular Modified Method =================<
 
@@ -139,18 +149,25 @@ class Numerical_Analysis:
     call this function to get Your Values 
     You can also pass Number Of itrations You Want to Perform
         """
-        itration=4 if itration==None else itration
-        create_x=[self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap)<=self.x_given]
-        create_y=[self.y_0]
-        for i in range(0,len(create_x)-1):
-            k_1 = self.gap * self.functionToWork(create_x[i],create_y[-1])
-            k_2 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_1/2))
-            k_3 = self.gap * self.functionToWork(create_x[i]+(self.gap/2),create_y[-1]+(k_2/2))
-            k_4 = self.gap * self.functionToWork(create_x[i]+self.gap,create_y[-1]+k_3)
+        itration = 4 if itration == None else itration
+        create_x = [
+            self.x_0+i*self.gap for i in range(2*itration) if (self.x_0+i*self.gap) <= self.x_given]
+        create_y = [self.y_0]
+        for i in range(0, len(create_x)-1):
+            k_1 = self.gap * self.functionToWork(create_x[i], create_y[-1])
+            k_2 = self.gap * \
+                self.functionToWork(
+                    create_x[i]+(self.gap/2), create_y[-1]+(k_1/2))
+            k_3 = self.gap * \
+                self.functionToWork(
+                    create_x[i]+(self.gap/2), create_y[-1]+(k_2/2))
+            k_4 = self.gap * \
+                self.functionToWork(create_x[i]+self.gap, create_y[-1]+k_3)
             k = (k_1+(2*k_2)+(2*k_3)+k_4)/6
             yOut = create_y[-1] + k
             create_y.append(yOut)
-        return create_x,create_y
+        return create_x, create_y
+
 
 class Numerical_Integration:
     """
@@ -171,12 +188,12 @@ class Numerical_Integration:
 
     """
     @Error_Handler
-    def __init__(self,lower,upper,function):
-        self.x,self.y=eval(str(lower)),eval(str(upper))
-        self.function=str(function)
+    def __init__(self, lower, upper, function):
+        self.x, self.y = eval(str(lower)), eval(str(upper))
+        self.function = str(function)
 
-    @Error_Handler    
-    def Trapazoid(self,itration=2):
+    @Error_Handler
+    def Trapazoid(self, itration=2):
         """
     >============ Trapazoid =================<
 
@@ -187,7 +204,7 @@ class Numerical_Integration:
     and it calculates the area.
 
       Trapazoid() 
-      
+
     call this function to get Your Values 
     """
         def functionToWork(x):
@@ -199,14 +216,15 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(itration)
-        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
-        create_y=[functionToWork(i) for i in create_x]
-        formula=(gap/2)*((create_y[0]+create_y[-1])+2*sum([create_y[i] for i in range(1,len(create_y)-1)]))
+        gap = (self.y-self.x)/(itration)
+        create_x = [self.x+(i*gap) for i in range(0, itration+1)]
+        create_y = [functionToWork(i) for i in create_x]
+        formula = (gap/2)*((create_y[0]+create_y[-1])+2 *
+                           sum([create_y[i] for i in range(1, len(create_y)-1)]))
         return formula
 
     @Error_Handler
-    def Simpson_38(self,itration=2):
+    def Simpson_38(self, itration=2):
         """
     >============ Simpson 1/3 =================<
 
@@ -217,7 +235,7 @@ class Numerical_Integration:
     second order polynomial.
 
       Simpson_13() 
-      
+
     call this function to get Your Values 
 
         """
@@ -230,14 +248,15 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(itration)
-        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
-        create_y=[functionToWork(i) for i in create_x]
-        formula=((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1,len(create_y)) if (i)%3!=0]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,3)])))
+        gap = (self.y-self.x)/(itration)
+        create_x = [self.x+(i*gap) for i in range(0, itration+1)]
+        create_y = [functionToWork(i) for i in create_x]
+        formula = ((3*gap)/8)*((create_y[0]+create_y[-1])+3*(sum([create_y[i] for i in range(1, len(
+            create_y)) if (i) % 3 != 0]))+2*(sum([create_y[i] for i in range(2, len(create_y)-1, 3)])))
         return formula
-    
+
     @Error_Handler
-    def Simpson_13(self,itration=2):
+    def Simpson_13(self, itration=2):
         """
     >============ Simpson 3/8 =================<
 
@@ -246,7 +265,7 @@ class Numerical_Integration:
     and is exact if f is a polynomial up to cubic degree.
 
       Simpson_38() 
-      
+
     call this function to get Your Values 
         """
         def functionToWork(x):
@@ -258,18 +277,20 @@ class Numerical_Integration:
             this function takes 1 input
             """
             return eval(self.function)
-        gap=(self.y-self.x)/(itration)
-        create_x=[self.x+(i*gap) for i in range(0,itration+1)]
-        create_y=[functionToWork(i) for i in create_x]
-        formula=(gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(1,len(create_y)-1,2)]))+2*(sum([create_y[i] for i in range(2,len(create_y)-1,2)])))
+        gap = (self.y-self.x)/(itration)
+        create_x = [self.x+(i*gap) for i in range(0, itration+1)]
+        create_y = [functionToWork(i) for i in create_x]
+        formula = (gap/3)*((create_y[0]+create_y[-1])+4*(sum([create_y[i] for i in range(
+            1, len(create_y)-1, 2)]))+2*(sum([create_y[i] for i in range(2, len(create_y)-1, 2)])))
         return formula
+
 
 class Numerical_Interpolation:
     """
     In the mathematical field of numerical analysis,
     interpolation is a type of estimation, a method of constructing 
     new data points within the range of a discrete set of known data points.
-    
+
     In this Module We have Three Methods
     ---> Langrangian
     ---> Newton Divided Differences
@@ -281,10 +302,10 @@ class Numerical_Interpolation:
 >=========================================================<
     """
     @Error_Handler
-    def __init__(self,x_list,y_list,find_value):
-        self.x_l=x_list
-        self.y_l=y_list
-        self.find_val=find_value
+    def __init__(self, x_list, y_list, find_value):
+        self.x_l = x_list
+        self.y_l = y_list
+        self.find_val = find_value
 
     @Error_Handler
     def Langrangian(self):
@@ -298,11 +319,12 @@ class Numerical_Interpolation:
 
         call this function to get Your Values
         """
-        function=0
+        function = 0
         for i in range(len(self.x_l)):
-            list_up=[self.find_val-j for j in self.x_l if j!=self.x_l[i]]
-            list_down=[self.x_l[i]-j for j in self.x_l if j!=self.x_l[i]]
-            function=function+self.y_l[i]*(np.prod(list_up)/np.prod(list_down))
+            list_up = [self.find_val-j for j in self.x_l if j != self.x_l[i]]
+            list_down = [self.x_l[i]-j for j in self.x_l if j != self.x_l[i]]
+            function = function+self.y_l[i] * \
+                (np.prod(list_up)/np.prod(list_down))
         return function
 
     @Error_Handler
@@ -318,29 +340,31 @@ class Numerical_Interpolation:
 
         call this function to get Your Values
         """
-        length=len(self.x_l)
-        overall=[self.y_l]
-        x_gap=1
-        def divisor(x_0,x_1,y_0,y_1):
-            y=(y_1-y_0)/(x_1-x_0)
+        length = len(self.x_l)
+        overall = [self.y_l]
+        x_gap = 1
+
+        def divisor(x_0, x_1, y_0, y_1):
+            y = (y_1-y_0)/(x_1-x_0)
             return y
-        for i in range(length,1,-1):
-            local=[]
-            y_list_itrate=overall[-1]
+        for i in range(length, 1, -1):
+            local = []
+            y_list_itrate = overall[-1]
             for j in range(i-1):
-                z=divisor(self.x_l[j], self.x_l[j+x_gap], y_list_itrate[j], y_list_itrate[j+1])
+                z = divisor(self.x_l[j], self.x_l[j+x_gap],
+                            y_list_itrate[j], y_list_itrate[j+1])
                 local.append(z)
             overall.append(local)
-            x_gap+=1
-        function=0
+            x_gap += 1
+        function = 0
         for x in range(len(overall)):
-            if x+1==1:
-                function+=overall[x][0]
+            if x+1 == 1:
+                function += overall[x][0]
             else:
-                set=""
+                set = ""
                 for z in range(x):
-                    set=set+(f"*(self.find_val-({self.x_l[z]}))")
-                function+=((overall[x][0])*(eval(set[1:])))
+                    set = set+(f"*(self.find_val-({self.x_l[z]}))")
+                function += ((overall[x][0])*(eval(set[1:])))
         return function
 
     @Error_Handler
@@ -349,34 +373,34 @@ class Numerical_Interpolation:
         Forward Differences: The differences y1 – y0, y2 – y1, y3 – y2, ……,
         yn – yn–1 when denoted by dy0, dy1, dy2, ……, dyn–1 are respectively, 
         called the first forward differences.
-        
+
         Newton_Forward()
 
         call this function to get Your Values
         """
-        length=len(self.x_l)
-        overall=[self.y_l]
-        x_gap=1
-        for i in range(length,1,-1):
-            local=[]
-            y_list_itrate=overall[-1]
+        length = len(self.x_l)
+        overall = [self.y_l]
+        x_gap = 1
+        for i in range(length, 1, -1):
+            local = []
+            y_list_itrate = overall[-1]
             for j in range(i-1):
-                z=y_list_itrate[j+1] - y_list_itrate[j]
+                z = y_list_itrate[j+1] - y_list_itrate[j]
                 local.append(z)
             overall.append(local)
-            x_gap+=1
-        u=(self.find_val-self.x_l[0])/(self.x_l[1]-self.x_l[0])
-        function=0
+            x_gap += 1
+        u = (self.find_val-self.x_l[0])/(self.x_l[1]-self.x_l[0])
+        function = 0
         for x in range(len(overall)):
-            if x+1==1:
-                function+=overall[x][0]
-            else :
-                set=""
+            if x+1 == 1:
+                function += overall[x][0]
+            else:
+                set = ""
                 for z in range(x):
-                    set+=(f"*(u-({z}))")
-                function+=((eval(set[1:]))*overall[x][0])/math.factorial(x)
+                    set += (f"*(u-({z}))")
+                function += ((eval(set[1:]))*overall[x][0])/math.factorial(x)
         return function
-    
+
     @Error_Handler
     def Newton_Backward(self):
         """
@@ -387,29 +411,30 @@ class Numerical_Interpolation:
 
         call this function to get Your Values
         """
-        length=len(self.x_l)
-        overall=[self.y_l]
-        x_gap=1
-        for i in range(length,1,-1):
-            local=[]
-            y_list_itrate=overall[-1]
+        length = len(self.x_l)
+        overall = [self.y_l]
+        x_gap = 1
+        for i in range(length, 1, -1):
+            local = []
+            y_list_itrate = overall[-1]
             for j in range(i-1):
-                z=y_list_itrate[j+1] - y_list_itrate[j]
+                z = y_list_itrate[j+1] - y_list_itrate[j]
                 local.append(z)
             overall.append(local)
-            x_gap+=1
-        u=(self.find_val-self.x_l[-1])/(self.x_l[1]-self.x_l[0])
-        function=0
+            x_gap += 1
+        u = (self.find_val-self.x_l[-1])/(self.x_l[1]-self.x_l[0])
+        function = 0
         for x in range(len(overall)):
-            if x+1==1:
-                function+=overall[x][-1]
-            else :
-                set=""
+            if x+1 == 1:
+                function += overall[x][-1]
+            else:
+                set = ""
                 for z in range(x):
-                    set+=(f"*(u+({z}))")
-                function+=((eval(set[1:]))*overall[x][-1])/math.factorial(x)
+                    set += (f"*(u+({z}))")
+                function += ((eval(set[1:]))*overall[x][-1])/math.factorial(x)
         return function
-    
+
+
 class Numerical_Algebra:
     """
     Numerical linear algebra, sometimes called applied linear algebra,
@@ -429,12 +454,13 @@ class Numerical_Algebra:
 >=========================================================<
     """
     @Error_Handler
-    def __init__(self,l_1,l_2,l_3):
-        self.l_1=l_1
-        self.l_2=l_2
-        self.l_3=l_3
+    def __init__(self, l_1, l_2, l_3):
+        self.l_1 = l_1
+        self.l_2 = l_2
+        self.l_3 = l_3
+
     @Error_Handler
-    def Jacobi(self,itration=6):
+    def Jacobi(self, itration=6):
         """
         In numerical linear algebra, the Jacobi method is an iterative
         algorithm for determining the solutions of a strictly diagonally 
@@ -446,45 +472,53 @@ class Numerical_Algebra:
         Also can pass number of Itration to Perform By default :=> 6
         call this function to get Your Values 
         """
-        x_list=[0]
-        y_list=[0]
-        z_list=[0]
+        x_list = [0]
+        y_list = [0]
+        z_list = [0]
         for i in range(itration):
-            x,y,z=x_list[-1],y_list[-1],z_list[-1]
-            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
-            y_find=(self.l_2[-1]-((self.l_2[0])*(x))-((z)*(self.l_2[2])))/self.l_2[1]
-            z_find=(self.l_3[-1]-((self.l_3[0])*(x))-((y)*(self.l_3[1])))/self.l_3[2]
+            x, y, z = x_list[-1], y_list[-1], z_list[-1]
+            x_find = (self.l_1[-1]-((self.l_1[1])*(y)) -
+                      ((z)*(self.l_1[2])))/self.l_1[0]
+            y_find = (self.l_2[-1]-((self.l_2[0])*(x)) -
+                      ((z)*(self.l_2[2])))/self.l_2[1]
+            z_find = (self.l_3[-1]-((self.l_3[0])*(x)) -
+                      ((y)*(self.l_3[1])))/self.l_3[2]
             x_list.append(x_find)
             y_list.append(y_find)
             z_list.append(z_find)
-        return x_list,y_list,z_list
+        return x_list, y_list, z_list
+
     @Error_Handler
-    def Gauss_Seidel(self,itration=6):
+    def Gauss_Seidel(self, itration=6):
         """
         In numerical linear algebra, the Gauss–Seidel method, 
         also known as the Liebmann method or the method of successive displacement,
         is an iterative method used to solve a system of linear equations.
         It is named after the German mathematicians Carl Friedrich Gauss
         and Philipp Ludwig von Seidel, and is similar to the Jacobi method.
-        
+
         Gauss_Seidel() 
         Also can pass number of Itration to Perform By default :=> 6
         call this function to get Your Values 
         """
-        x_list=[0]
-        y_list=[0]
-        z_list=[0]
+        x_list = [0]
+        y_list = [0]
+        z_list = [0]
         for i in range(itration):
-            x,y,z=x_list[-1],y_list[-1],z_list[-1]
-            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2])))/self.l_1[0]
-            y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2])))/self.l_2[1]
-            z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1])))/self.l_3[2]
+            x, y, z = x_list[-1], y_list[-1], z_list[-1]
+            x_find = (self.l_1[-1]-((self.l_1[1])*(y)) -
+                      ((z)*(self.l_1[2])))/self.l_1[0]
+            y_find = (self.l_2[-1]-((self.l_2[0])*(x_find)) -
+                      ((z)*(self.l_2[2])))/self.l_2[1]
+            z_find = (self.l_3[-1]-((self.l_3[0])*(x_find)) -
+                      ((y_find)*(self.l_3[1])))/self.l_3[2]
             x_list.append(x_find)
             y_list.append(y_find)
             z_list.append(z_find)
-        return x_list,y_list,z_list
+        return x_list, y_list, z_list
+
     @Error_Handler
-    def Gauss_Seidel_4(self,l_4,itration=6):
+    def Gauss_Seidel_4(self, l_4, itration=6):
         """
         In numerical linear algebra, the Gauss–Seidel method, 
         also known as the Liebmann method or the method of successive displacement,
@@ -497,46 +531,80 @@ class Numerical_Algebra:
         Also can pass number of Itration to Perform By default :=> 6
         call this function to get Your Values 
         """
-        x_list=[0]
-        y_list=[0]
-        z_list=[0]
-        w_list=[0]
+        x_list = [0]
+        y_list = [0]
+        z_list = [0]
+        w_list = [0]
         for i in range(itration):
-            x,y,z,w=x_list[-1],y_list[-1],z_list[-1],w_list[-1]
-            x_find=(self.l_1[-1]-((self.l_1[1])*(y))-((z)*(self.l_1[2]))-((w)*(self.l_1[3])))/self.l_1[0]
-            y_find=(self.l_2[-1]-((self.l_2[0])*(x_find))-((z)*(self.l_2[2]))-((w)*(self.l_2[3])))/self.l_2[1]
-            z_find=(self.l_3[-1]-((self.l_3[0])*(x_find))-((y_find)*(self.l_3[1]))-((w)*(self.l_3[3])))/self.l_3[2]
-            w_find=(l_4[-1]-((l_4[0])*(x_find))-((y_find)*(l_4[1]))-((z_find)*(l_4[2])))/l_4[3]
+            x, y, z, w = x_list[-1], y_list[-1], z_list[-1], w_list[-1]
+            x_find = (self.l_1[-1]-((self.l_1[1])*(y))-((z)
+                      * (self.l_1[2]))-((w)*(self.l_1[3])))/self.l_1[0]
+            y_find = (self.l_2[-1]-((self.l_2[0])*(x_find)) -
+                      ((z)*(self.l_2[2]))-((w)*(self.l_2[3])))/self.l_2[1]
+            z_find = (self.l_3[-1]-((self.l_3[0])*(x_find)) -
+                      ((y_find)*(self.l_3[1]))-((w)*(self.l_3[3])))/self.l_3[2]
+            w_find = (l_4[-1]-((l_4[0])*(x_find)) -
+                      ((y_find)*(l_4[1]))-((z_find)*(l_4[2])))/l_4[3]
             x_list.append(x_find)
             y_list.append(y_find)
             z_list.append(z_find)
             w_list.append(w_find)
-        return x_list,y_list,z_list,w_list
+        return x_list, y_list, z_list, w_list
 
-if __name__=="__main__":
 
-    # Test For Varification of error can be removed 
-    y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))") #2
-    print(y.Eular(  ))
-    print(y.EularModified(  ))
-    print(y.RungaKutta(  ))
+if __name__ == "__main__":
 
-    # Test For Varification of error can be removed 
-    x = na.Numerical_Integration(2,7,"1/(5*x+3)") #0.4301 - 5
+    # Test For Varification of error can be removed
+    # y = na.Numerical_Analysis(0,1,0.2,0.1,"((x**3)*(math.e**(-2*x))-(2*y))") #2
+    # print(y.Eular(  ))
+    # print(y.EularModified(  ))
+    # print(y.RungaKutta(  ))
+
+    # Test For Varification of error can be removed
+    # x = na.Numerical_Integration(2,7,"1/(5*x+3)") #0.4301 - 5
+    # print(x.Trapazoid(6))
+    # print(x.Simpson_13(6))
+    # print(x.Simpson_38(6))
+
+    # Test For Varification of error can be removed
+    # z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925) # 14.666 - 10
+    # print(z.Langrangian())
+    # print(z.Newton_Divided())
+    # print(z.Newton_Forward())
+    # print(z.Newton_Backward())
+
+    # Test For Varification of error can be removed
+    # w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61]) #x=1.23 y=2.34 z=3.45
+    # print(w.Jacobi())
+    # print(w.Gauss_Seidel())
+    # print(w.Gauss_Seidel_4())
+
+    # Test For Varification of error can be removed
+    # y = Numerical_Analysis(
+    #     0, 1, 0.2, 0.1, "((x**3)*(math.e**(-2*x))-(2*y))")  # 2
+    y = Numerical_Analysis(
+        0, 1, 0.2, 0.1, "((x**3)*(math.e**(-2*x))-(2*y))")  # 2
+    print(y.Eular())
+    print(y.EularModified())
+    print(y.RungaKutta())
+
+    # Test For Varification of error can be removed
+    x = Numerical_Integration(2, 7, "1/(5*x+3)")  # 0.4301 - 5
     print(x.Trapazoid(6))
     print(x.Simpson_13(6))
     print(x.Simpson_38(6))
 
-    # Test For Varification of error can be removed 
-    z = na.Numerical_Interpolation([1891,1901,1911,1921,1931],[46,66,81,93,101],1925) # 14.666 - 10
+    # Test For Varification of error can be removed
+    z = Numerical_Interpolation([5, 6, 9, 11], [
+        12, 13, 14, 16], 10)  # 14.666 - 10
     print(z.Langrangian())
     print(z.Newton_Divided())
     print(z.Newton_Forward())
     print(z.Newton_Backward())
 
-    # Test For Varification of error can be removed 
-    w = na.Numerical_Algebra([10,1,-1,11.19],[1,10,1,28.08],[-1,1,10,35.61]) #x=1.23 y=2.34 z=3.45
+    # Test For Varification of error can be removed
+    w = Numerical_Algebra(
+        [10, 1, -1, 11.19], [1, 10, 1, 28.08], [-1, 1, 10, 35.61])  # x=1.23 y=2.34 z=3.45
     print(w.Jacobi())
     print(w.Gauss_Seidel())
     # print(w.Gauss_Seidel_4())
-
