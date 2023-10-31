@@ -1,8 +1,12 @@
 # VERSION 1.0.1
 
-<img src="https://github.com/AMANKANOJIYA/Numerical_Analysis/blob/master/src/saved.jpg"></img>
+![Alt text](image.png)
 
-[![Downloads](https://static.pepy.tech/personalized-badge/numerical-analysis-aman?period=total&units=international_system&left_color=black&right_color=blue&left_text=Downloads)](https://pepy.tech/project/numerical-analysis-aman)
+[![Downloads](https://static.pepy.tech/badge/numerical-analysis-aman)](https://pepy.tech/project/numerical-analysis-aman)
+
+[![Downloads](https://static.pepy.tech/badge/numerical-analysis-aman/month)](https://pepy.tech/project/numerical-analysis-aman)
+
+[![Downloads](https://static.pepy.tech/badge/numerical-analysis-aman/week)](https://pepy.tech/project/numerical-analysis-aman)
 
 # Numerical Analysis
 
