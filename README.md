@@ -1,6 +1,6 @@
 # VERSION 1.0.1
 
-![Alt text](image.png)
+![Alt text](./src_image/image.png)
 
 [![Downloads](https://static.pepy.tech/badge/numerical-analysis-aman)](https://pepy.tech/project/numerical-analysis-aman)
 
