@@ -29,11 +29,13 @@ import math
 
 
 class Vector(object):
-    '''
-    Vector is a library to get basic functions for Vector operation 
-    this module will help user to do some operations on Vector and 
-    get the desired Output 
-    '''
+    """
+    Vector Class
+
+    This Class is used to create a Vector Object which can be used to perform
+    various operations on it. It is a very useful class for Linear Algebra
+    and can be used to solve various problems related to it.
+    """
 
     def __init__(self, coordinates):
         try:
@@ -46,76 +48,141 @@ class Vector(object):
         except TypeError:
             raise TypeError("The Coordinates must be an iterable")
 
-    def __str__(self):
-        '''
-        Inform the Matrix corresponding to the value
-        '''
+    def __str__(self) -> str:
+        """
+        String Representation of the Vector
+
+        Args:
+            None
+
+        Returns:
+            str: String representation of the Vector
+
+        Attributes:
+            None
+        """
         return 'Vector: {}'.format(self.coordinates)
 
-    def __eq__(self, v):
-        '''
-        Verify wether the two Vectors are equal or not 
-        '''
+    def __eq__(self, v: Vector) -> bool:
+        """
+        Check if two vectors are equal
+
+        Args:
+            v (Vector): Vector to be added
+
+        Returns:
+            bool: True if the two vectors are equal else False
+
+        """
         return self.coordinates == v.coordinates
 
-    def __add__(self, v):
-        '''
-        adding two Vector with same dimention
-        '''
+    def __add__(self, v: Vector) -> Vector:
+        """
+        Add two vectors
+
+        Args:
+            v (Vector): Vector to be added
+
+        Returns:
+            Vector: Vector after addition
+
+        """
+
         new_coordinates = [x+y for x,
                            y in zip(self.coordinates, v.coordinates)]
         return Vector(new_coordinates)
 
-    def __sub__(self, v):
-        '''
-        Subtracting two Vector with same Dimention
-        '''
+    def __sub__(self, v: Vector) -> Vector:
+        """
+        Subtract two vectors
+
+        Args:
+            v (Vector): Vector to be subtracted
+
+        Returns:
+            Vector: Vector after subtraction
+
+        """
         new_coordinates = [x-y for x,
                            y in zip(self.coordinates, v.coordinates)]
         return Vector(new_coordinates)
 
-    def __mul__(self, n):
-        '''
-        Multiply two Vector with same Dimention
-        '''
+    def __mul__(self, n: Vector) -> Vector:
+        """
+        Multiply two vectors
+
+        Args:
+            n (Vector): Vector to be subtracted
+
+        Returns:
+            Vector: Vector after Multiplication
+
+        """
         new_coordinates = [x*n for x,
                            n in zip(self.coordinates, n.coordinates)]
         return Vector(new_coordinates)
 
-    def times_scalar(self, c):
-        '''
-        Scaler Product of a Constant with a Vector
-        '''
+    def times_scalar(self, c: float) -> Vector:
+        """
+        Scalar Multiplication of two vectors
+
+        Args:
+            c (float): Scalar to be multiplied
+
+        Returns:
+            Vector: Vector after Multiplication with c (Scaler Product)
+
+        """
         new_coordinates = [x*c for x in self.coordinates]
         return Vector(new_coordinates)
 
-    def magnitude(self):
-        '''
+    def magnitude(self) -> float:
+        """
         Magnitude of a Vector
-        '''
+
+        Returns:
+            float: Magnitude of the Vector
+        """
         return sum([i**2 for i in self.coordinates])**(1/2)
 
-    def normalized(self):
-        '''
-        Find Unit Vector of a Given Vectors
-        '''
+    def normalized(self) -> Vector:
+        """
+        Nomalized Vector
+
+        Returns:
+            Vector: Normalized Vector
+        """
         try:
             mag = self.magnitude()
             return Vector([i/mag for i in self.coordinates])
         except ZeroDivisionError:
             raise Exception('Cannot normalize the zero vector')
 
-    def dot(self, n):
-        '''
-        Dot Product of two Vectors
-        '''
+    def dot(self, n: Vector) -> float:
+        """
+        Dot Product of two vectors
+
+        Args:
+            n (Vector) : Vector to be multiplied
+
+        Returns:
+            float: Dot Product of the two vectors
+
+        """
         list_zip = zip(self.coordinates, n.coordinates)
         return sum([x*y for x, y in list_zip])
 
-    def angle(self, n, deg=False):
-        '''
-        Find angle between two Vectors (default Radian)
-        '''
+    def angle(self, n: Vector, deg: bool = False) -> float:
+        """
+        Angle between two vectors
+
+        Args:
+            n (Vector) : Vector to check angle with
+            deg (bool) : If True return angle in degree else in radians
+
+        Returns:
+            float: Angle between the two vectors
+        """
         try:
             num = self.dot(n)
             den = (self.magnitude())*(n.magnitude())
@@ -130,30 +197,52 @@ class Vector(object):
             else:
                 raise e
 
-    def is_parallel(self, n):
-        '''
-        find if the two Give Vectors are parallel to each Other 
-        '''
+    def is_parallel(self, n: Vector) -> bool:
+        """
+        Check if two vectors are parallel
+
+        Args:
+            n (Vector) : Vector to check parallel with
+
+        Returns:
+            bool: True if the two vectors are parallel else False
+        """
         return (self.is_zero() or n.is_zero() or self.angle(n) == 0 or self.angle(n) == math.pi)
 
-    def is_zero(self, tolerance=1e-10):
-        '''
-        find if the Give Vectors is Zero Vector
-        '''
+    def is_zero(self, tolerance: float = 1e-10) -> bool:
+        """
+        Check if a vector is zero vector
+
+        Args:
+            tolerance (float) : Tolerance value for the magnitude
+
+        Returns:
+            bool: True if the vector is zero vector else False
+        """
         return self.magnitude() < tolerance
 
-    def is_orthogonal(self, n, tolerance=1e-10):
-        '''
-        find if the two Give Vectors are parallel to each Other 
-        '''
+    def is_orthogonal(self, n: Vector, tolerance: float = 1e-10) -> bool:
+        """
+        Check if two vectors are orthogonal
+
+        Args:
+            n (Vector) : Vector to check orthogonal with
+            tolerance (float) : Tolerance value for the magnitude
+
+        Returns:
+            bool: True if the two vectors are orthogonal else False
+        """
         return self.dot(n) < tolerance
 
-    def com_orthogonal_to(self, n):
+    def com_orthogonal_to(self, n: Vector) -> Vector:
         """
-        Orthogonal Component of Vector over other Vector 
-        v.com_orthogonal_to(b)
-        v = unit to projected
-        b = Projected on
+        Orthogonal Component of Vector over other Vector
+
+        Args:
+            n (Vector) : Vector to check orthogonal with
+
+        Returns:
+            bool : True if the two vectors are orthogonal else False
         """
         try:
             return self - self.com_parallel_to(n)
@@ -163,12 +252,15 @@ class Vector(object):
             else:
                 raise e
 
-    def com_parallel_to(self, n):
+    def com_parallel_to(self, n: Vector) -> Vector:
         """
-        Parallel Component of Vector over other Vector 
-        v.com_parallel_to(b)
-        v = unit to projected
-        b = Projected on
+        Parallel Component of Vector over other Vector
+
+        Args:
+            n (Vector) : Vector to check parallel with
+
+        Returns:
+        bool : True if the two vectors are parallel else False
         """
         try:
             u = n.normalized()
@@ -179,10 +271,16 @@ class Vector(object):
             else:
                 raise e
 
-    def cross(self, n):
-        '''
-        Cross Product of two Given Vector (3x3) Only
-        '''
+    def cross(self, n: Vector) -> Vector:
+        """
+        Cross Product of two vectors
+
+        Args:
+            n (Vector) : Vector to check cross with
+
+        Returns:
+            Vector : Cross Product of the two vectors (Vector Product)
+        """
         try:
             x1, y1, z1 = self.coordinates
             x2, y2, z2 = n.coordinates
@@ -198,16 +296,28 @@ class Vector(object):
             else:
                 raise e
 
-    def area_of_triangle(self, n):
-        '''
+    def area_of_triangle(self, n: Vector) -> float:
+        """
         Area of triangle corresponding to the two givern Vector
-        '''
+
+        Args:
+            n (Vector) : Vector to get area with
+
+        Returns:
+            float : Area of the triangle
+        """
         return self.area_of_parallelogram(n) / 2.0
 
-    def area_of_parallelogram(self, n):
-        '''
+    def area_of_parallelogram(self, n: Vector) -> float:
+        """
         Area of parallelogram corresponding to the two givern Vector
-        '''
+
+        Args:
+            n (Vector) : Vector to get area with
+
+        Returns:
+            float : Area of the parallelogram
+        """
         platform = self.cross(n)
         return platform.magnitude()
 
